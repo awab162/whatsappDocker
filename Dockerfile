@@ -50,9 +50,9 @@ RUN echo "no" | avdmanager -s create avd \
 RUN git clone --depth 1 https://github.com/novnc/noVNC.git /opt/novnc \
   && ln -s /opt/novnc/utils/novnc_proxy /usr/local/bin/novnc_proxy
 
-# تثبيت Appium وإصدار مستقر من التعريف لتجنب مشاكل التوافق مع v3.0-rc
+# تثبيت الأحدث من Appium والتعريف لضمان التوافق مع v3
 RUN npm install -g appium@latest \
-  && appium driver install uiautomator2@2.34.2 \
+  && appium driver install uiautomator2 \
   && npm cache clean --force
 
 # ─── 5. ملفات التطبيق والمكتبات ────────────────────────────────
