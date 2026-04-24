@@ -36,13 +36,13 @@ RUN yes | sdkmanager --sdk_root="${ANDROID_HOME}" "platform-tools" "platforms;an
 # ب. محرك المحاكي (Emulator Engine)
 RUN yes | sdkmanager --sdk_root="${ANDROID_HOME}" "emulator"
 
-# ج. صورة النظام (تغيير حاسم لـ ARM64 تماشياً مع معالج Oracle)
-RUN yes | sdkmanager --sdk_root="${ANDROID_HOME}" "system-images;android-33;google_apis;arm64-v8a"
+# ج. صورة النظام (العودة لـ x86_64 للعمل على اللابتوب)
+RUN yes | sdkmanager --sdk_root="${ANDROID_HOME}" "system-images;android-33;google_apis;x86_64"
 
 # د. إنشاء الجهاز الوهمي (AVD)
 RUN echo "no" | avdmanager -s create avd \
     --name "wa_device" \
-    --package "system-images;android-33;google_apis;arm64-v8a" \
+    --package "system-images;android-33;google_apis;x86_64" \
     --device "pixel_4a" \
     --force
 
