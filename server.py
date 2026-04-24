@@ -25,6 +25,27 @@ wa = WhatsAppController(
 # حالة VNC
 _vnc_process = None
 
+@app.route("/")
+def index():
+    """الصفحة الرئيسية لعرض الحالة"""
+    return f"""
+    <html>
+        <head><title>WhatsApp Automation Server</title></head>
+        <body style="font-family: sans-serif; background: #121212; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+            <h1 style="color: #4DB6AC;">🚀 WhatsApp Server is Running</h1>
+            <p>Current State: <strong style="color: #FFC107;">{wa.state}</strong></p>
+            <div style="margin-top: 20px;">
+                <a href="/api/status" style="color: #2196f3; text-decoration: none; margin-right: 20px;">[ View Status API ]</a>
+                <button onclick="fetch('/api/screen', {{method:'POST', headers:{{'Content-Type':'application/json'}}, body:JSON.stringify({{action:'on'}})}}).then(r=>r.json()).then(d=>{{ if(d.ok) window.location.href='/vnc.html'; else alert(d.error); }})" 
+                        style="background: #4caf50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                    📺 Open Screen (noVNC)
+                </button>
+            </div>
+            <p style="font-size: 0.8em; color: #666; margin-top: 30px;">Note: Emulator may take 10-15 mins to boot on Render.</p>
+        </body>
+    </html>
+    """
+
 # ─────────────────────────────────────────────────────────────────
 # Helpers
 # ─────────────────────────────────────────────────────────────────

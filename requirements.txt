@@ -1,3 +1,4 @@
 flask==3.0.3
 appium-python-client==4.3.0
 selenium==4.26.1
+numpy
