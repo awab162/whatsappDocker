@@ -6,11 +6,11 @@ ENV ANDROID_HOME=/opt/android-sdk
 ENV PATH="${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/emulator:${ANDROID_HOME}/platform-tools:${PATH}"
 ENV LD_LIBRARY_PATH="${ANDROID_HOME}/emulator/lib64"
 ENV DISPLAY=:0
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
 # ─── 1. حزم النظام الأساسية ─────────────────────────────────────
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    openjdk-11-jdk \
+    openjdk-17-jdk \
     android-tools-adb \
     python3 python3-pip \
     git curl wget unzip \
